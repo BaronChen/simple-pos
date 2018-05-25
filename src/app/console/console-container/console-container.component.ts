@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IItem } from '../models/item';
+import { getItems } from '../reducers';
+import { LoadItems } from '../actions/items.actions';
 
 @Component({
   selector: 'app-console-container',
@@ -8,9 +12,13 @@ import { Store } from '@ngrx/store';
 })
 export class ConsoleContainerComponent implements OnInit {
 
+  items$: Observable<IItem[]>;
+
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.store.dispatch(new LoadItems());
+    this.items$ = this.store.select(getItems);
   }
 
 }

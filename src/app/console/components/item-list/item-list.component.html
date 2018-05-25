@@ -1,3 +1,5 @@
-<p>
-  item-list works!
-</p>
+<div fxLayout="row wrap" fxLayout.xs="column" fxFlexFill>
+  <div *ngFor="let item of items">
+    <app-item-block [item]="item"></app-item-block>
+  </div>
+</div>

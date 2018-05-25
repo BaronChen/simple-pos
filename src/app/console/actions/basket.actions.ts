@@ -11,17 +11,17 @@ export enum BasketActionTypes {
 
 export class UpdateTotalPrice implements Action {
   readonly type = BasketActionTypes.UpdateTotalPrice;
-  payload: number;
+  constructor(public payload: number) {}
 }
 
 export class AddOrUpdateItemInBasket implements Action {
   readonly type = BasketActionTypes.AddOrUpdateItemInBasket;
-  payload: IBasketItem;
+  constructor(public payload: IBasketItem) {}
 }
 
 export class RemoveItemFromBasket implements Action {
   readonly type = BasketActionTypes.RemoveItemFromBasket;
-  payload: string;
+  constructor(public payload: string) {}
 }
 
 export class ClearBasket implements Action {

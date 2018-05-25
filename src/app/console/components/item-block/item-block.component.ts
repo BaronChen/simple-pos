@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IItem } from '../../models/item';
 
 @Component({
   selector: 'app-item-block',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-block.component.css']
 })
 export class ItemBlockComponent implements OnInit {
+
+  @Input()
+  item: IItem;
 
   constructor() { }
 

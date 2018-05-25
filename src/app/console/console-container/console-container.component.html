@@ -1,6 +1,4 @@
-<mat-drawer-container>
-  <mat-drawer mode="side" opened="true">
-    <div style="width: 300px;">basketsasdasdasdsfsdfsdfsdfsdffdgdfgdfgd</div>
-  </mat-drawer>
-  <mat-drawer-content>Items</mat-drawer-content>
-</mat-drawer-container>
+<div fxLayout="row" fxLayout.xs="column-reverse" fxFlexFill>
+    <app-basket></app-basket>
+    <app-item-list [items]="items$ | async"></app-item-list>
+</div>

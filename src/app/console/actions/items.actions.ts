@@ -13,12 +13,12 @@ export class LoadItems implements Action {
 
 export class LoadItemsSuccess implements Action {
   readonly type = ItemsActionTypes.LoadItemsSuccess;
-  payload: IItem[];
+  constructor(public payload: IItem[]) {}
 }
 
 export class SelectItem implements Action {
   readonly type = ItemsActionTypes.SelectItem;
-  payload: string;
+  constructor(public payload: string) {}
 }
 
 export type ItemsAction = LoadItems | LoadItemsSuccess |SelectItem;

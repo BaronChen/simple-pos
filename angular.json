@@ -118,5 +118,8 @@
       }
     }
   },
-  "defaultProject": "simple-pos"
+  "defaultProject": "simple-pos",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

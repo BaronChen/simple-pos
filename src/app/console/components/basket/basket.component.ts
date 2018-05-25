@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IBasketItemDetail } from '../../models/basket-item';
 
 @Component({
@@ -10,10 +10,16 @@ export class BasketComponent implements OnInit {
 
 
   @Input()
-  basketItems: IBasketItemDetail;
+  basketItems: IBasketItemDetail[];
+
+  @Input()
+  total: number;
 
   @Input()
   isMobile: boolean;
+
+  @Output()
+  removeItem: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() {}
 

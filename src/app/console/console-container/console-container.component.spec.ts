@@ -10,19 +10,25 @@ import { getFlatArray } from '../../shared/models/flat-array';
 import { IBasketItem, IBasketItemDetail } from '../models/basket-item';
 import { LoadItems } from '../actions/items.actions';
 import { By } from '@angular/platform-browser';
-import { AddOrUpdateItemInBasket } from '../actions/basket.actions';
+import { AddOrUpdateItemInBasket, RemoveItemFromBasket } from '../actions/basket.actions';
 import { LayoutModule } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-basket',
   template: '<div></div>'
 })
-class MockAppBasketComponent {
+class MockBasketComponent {
   @Input()
-  basketItems: IBasketItemDetail;
+  basketItems: IBasketItemDetail[];
 
   @Input()
   isMobile: boolean;
+
+  @Input()
+  total: number;
+
+  @Output()
+  removeItem: EventEmitter<string> = new EventEmitter<string>();
 
 }
 
@@ -47,19 +53,19 @@ describe('ConsoleContainerComponent', () => {
       id: 'test_item_id_1',
       name: 'test_item_1',
       imageUrl: 'test_item_url_1',
-      price: 10
+      price: 4.99
     },
     {
       id: 'test_item_id_2',
       name: 'test_item_2',
       imageUrl: 'test_item_url_2',
-      price: 20
+      price: 3.99
     },
     {
       id: 'test_item_id_3',
       name: 'test_item_3',
       imageUrl: 'test_item_url_3',
-      price: 30
+      price: 5.99
     }
   ];
 
@@ -70,7 +76,7 @@ describe('ConsoleContainerComponent', () => {
     },
     {
       id: 'test_item_id_2',
-      quantity: 2
+      quantity: 3
     }
   ];
 
@@ -85,11 +91,12 @@ describe('ConsoleContainerComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [StoreModule.forRoot({}), LayoutModule],
-      declarations: [ConsoleContainerComponent, MockAppBasketComponent, MockItemListComponent],
-      providers: [{provide: INITIAL_STATE, useValue:
-        {
-          console: testState
-        }
+      declarations: [ConsoleContainerComponent, MockBasketComponent, MockItemListComponent],
+      providers: [{
+        provide: INITIAL_STATE, useValue:
+          {
+            console: testState
+          }
       }]
     });
 
@@ -101,7 +108,7 @@ describe('ConsoleContainerComponent', () => {
     component = fixture.componentInstance;
     store = TestBed.get(Store);
 
-    spyOn(store, 'dispatch').and.callFake(() => {});
+    spyOn(store, 'dispatch').and.callFake(() => { });
     fixture.detectChanges();
   });
 
@@ -129,6 +136,37 @@ describe('ConsoleContainerComponent', () => {
     mockItemListComponent.addItemToBasket.emit(testEvent);
     expect(store.dispatch).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledWith(new AddOrUpdateItemInBasket(testEvent));
+  });
+
+  it('should send correct basket item details to BasketComponent', () => {
+    const mockBasketComponentEl = fixture.debugElement.query(By.directive(MockBasketComponent));
+    const mockBasketComponent = mockBasketComponentEl.injector.get(MockBasketComponent) as MockBasketComponent;
+
+    expect(mockBasketComponent.basketItems).toEqual([
+      {
+        id: testBasketItems[0].id,
+        quantity: testBasketItems[0].quantity,
+        name: testItems[0].name,
+        subtotal: 49.9
+      },
+      {
+        id: testBasketItems[1].id,
+        quantity: testBasketItems[1].quantity,
+        name: testItems[1].name,
+        subtotal: 11.97
+      }
+    ]);
+
+    expect(mockBasketComponent.total).toEqual(61.87);
+  });
+
+  it('should dispatch RemoveItemFromBasket action when event emited', () => {
+    (store.dispatch as any).calls.reset();
+    const mockBasketComponentEl = fixture.debugElement.query(By.directive(MockBasketComponent));
+    const mockBasketComponent = mockBasketComponentEl.injector.get(MockBasketComponent) as MockBasketComponent;
+    mockBasketComponent.removeItem.emit(testBasketItems[0].id);
+    expect(store.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledWith(new RemoveItemFromBasket(testBasketItems[0].id));
   });
 
 });

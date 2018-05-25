@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IItem } from '../models/item';
-import { getItems, getBasketItemDetails } from '../reducers';
+import { getItems, getBasketItemDetails, getTotal } from '../reducers';
 import { LoadItems } from '../actions/items.actions';
-import { AddOrUpdateItemInBasket } from '../actions/basket.actions';
+import { AddOrUpdateItemInBasket, RemoveItemFromBasket } from '../actions/basket.actions';
 import { IBasketItem, IBasketItemDetail } from '../models/basket-item';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
@@ -17,6 +17,7 @@ export class ConsoleContainerComponent implements OnInit {
 
   items$: Observable<IItem[]>;
   basketItems$: Observable<IBasketItemDetail[]>;
+  total$: Observable<number>;
 
   isMobile: boolean;
 
@@ -35,10 +36,14 @@ export class ConsoleContainerComponent implements OnInit {
     this.store.dispatch(new LoadItems());
     this.items$ = this.store.select(getItems);
     this.basketItems$ = this.store.select(getBasketItemDetails);
+    this.total$ = this.store.select(getTotal);
   }
 
   onAddItemToBasket(data: IBasketItem) {
     this.store.dispatch(new AddOrUpdateItemInBasket(data));
   }
 
+  onRemoveItem(id: string) {
+    this.store.dispatch(new RemoveItemFromBasket(id));
+  }
 }

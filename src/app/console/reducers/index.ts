@@ -4,6 +4,8 @@ import { IItem } from '../models/item';
 import * as fromItems from './items.reducer';
 import * as fromBasket from './basket.reducer';
 import { IBasketItemDetail } from '../models/basket-item';
+import { from } from 'rxjs';
+import * as lodash from 'lodash';
 
 export interface IConsoleState {
   items: fromItems.IItemState;
@@ -40,6 +42,11 @@ export const getBasketItemDetails = createSelector(
     id: x,
     name: itemsState.byId[x].name,
     quantity: basketState.basketItems.byId[x].quantity,
-    subtotal: itemsState.byId[x].price * basketState.basketItems.byId[x].quantity
+    subtotal: Math.round(100 * itemsState.byId[x].price * basketState.basketItems.byId[x].quantity) / 100
   }))
+);
+
+export const getTotal = createSelector(
+  getBasketItemDetails,
+  (basketItemDetails: IBasketItemDetail[]) => Math.round(100 * lodash.sumBy(basketItemDetails, (x: IBasketItemDetail) => x.subtotal)) / 100
 );

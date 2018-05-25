@@ -1,13 +1,12 @@
 <div [ngClass]="isMobile ? 'basket-mobile' : 'basket'">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Basket</span>
+      <span>Total: ${{total}}</span>
       <span class="fill-space"></span>
       <button class="submit-button" color="accent" mat-raised-button>Submit</button>
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-list class="basket-item-list">
-    <app-basket-item *ngFor="let basketItem of basketItems" [basketItem]="basketItem"></app-basket-item>
+    <app-basket-item *ngFor="let basketItem of basketItems" [basketItem]="basketItem" (removeItem)="removeItem.emit($event)"></app-basket-item>
   </mat-list>
-
 </div>

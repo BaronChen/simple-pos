@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ItemBlockComponent } from './item-block.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ConsoleService } from '../../services/console.service';
-import { IItem } from '../../models/item';
+import { ConsoleService } from '../../../services/console.service';
+import { IItem } from '../../../models/item';
 import { By } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 import { IOrderModalDialogResult, OrderDialogComponent } from './order-dialog/order-dialog.component';

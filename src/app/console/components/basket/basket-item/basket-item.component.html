@@ -1,5 +1,5 @@
 <mat-list-item>
-  <button mat-icon-button>
+  <button mat-icon-button (click)="onRemoveItem()">
     <mat-icon color="warn">remove_circle</mat-icon>
   </button>
   <h4> {{basketItem?.name}}</h4>
@@ -11,6 +11,6 @@
 <mat-divider></mat-divider>
 <mat-list-item>
   <span class="fill-space"> </span>
-  <h5>Subtotal: {{basketItem?.subtotal}}</h5>
+  <h5>Subtotal: ${{basketItem?.subtotal}}</h5>
 </mat-list-item>
 <mat-divider></mat-divider>

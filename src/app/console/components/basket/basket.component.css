@@ -4,6 +4,7 @@
   max-height: 100vh;
   position: fixed;
   top: 0;
+  border: solid 1px lightgray;
 }
 
 .basket-mobile {

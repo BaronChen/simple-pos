@@ -2,8 +2,8 @@ import { Action } from '@ngrx/store';
 
 
 export interface IBasketState {
-  totalPrice: number;
-  selectedItems: string[];
+  readonly totalPrice: number;
+  readonly selectedItems: ReadonlyArray<string>[];
 }
 
 export const initialState: IBasketState = {

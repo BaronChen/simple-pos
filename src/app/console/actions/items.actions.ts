@@ -16,9 +16,4 @@ export class LoadItemsSuccess implements Action {
   constructor(public payload: IItem[]) {}
 }
 
-export class SelectItem implements Action {
-  readonly type = ItemsActionTypes.SelectItem;
-  constructor(public payload: string) {}
-}
-
-export type ItemsAction = LoadItems | LoadItemsSuccess |SelectItem;
+export type ItemsAction = LoadItems | LoadItemsSuccess;

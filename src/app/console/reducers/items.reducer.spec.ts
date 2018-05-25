@@ -62,15 +62,4 @@ describe('Items Reducer', () => {
     });
   });
 
-  describe('SelectItem Action', () => {
-    it('should return the initial state', () => {
-      const action: itemsAction.SelectItem = {
-        type: itemsAction.ItemsActionTypes.SelectItem,
-        payload: 'id'
-      };
-
-      const result = reducer(initialState, action);
-      expect(result).toBe(initialState);
-    });
-  });
 });

@@ -9,8 +9,7 @@ import {
   MatCommonModule,
   MatCardModule,
   MatSelectModule,
-  MatSidenavModule,
-  MatGridListModule
+  MatDialogModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -26,8 +25,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCommonModule,
     MatCardModule,
     MatSelectModule,
-    MatSidenavModule,
-    MatGridListModule
+    MatDialogModule
   ],
   exports: [
     LayoutModule,
@@ -40,8 +38,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCommonModule,
     MatCardModule,
     MatSelectModule,
-    MatSidenavModule,
-    MatGridListModule
+    MatDialogModule
   ],
 })
 export class MaterialModule { }

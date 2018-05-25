@@ -3,7 +3,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { mergeMap, map } from 'rxjs/operators';
 import { Action, Store } from '@ngrx/store';
-import {ItemsActionTypes, ItemsAction, LoadItems, LoadItemsSuccess, SelectItem} from '../actions/items.actions';
+import {ItemsActionTypes, ItemsAction, LoadItems, LoadItemsSuccess } from '../actions/items.actions';
 import { ConsoleService } from '../services/console.service';
 import { IItem } from '../models/item';
 

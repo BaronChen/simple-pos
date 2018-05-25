@@ -1,0 +1,11 @@
+<h1 mat-dialog-title></h1>
+<div mat-dialog-content>
+  <span>{{data?.itemName}} x </span>
+  <mat-form-field class="order-modal-input">
+   <input matInput type="number" [(ngModel)]="quantity" cdkFocusInitial>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="{itemId: data.itemId, quantity: quantity}">Ok</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>

@@ -1,4 +1,4 @@
 <div fxLayout="row" fxLayout.xs="column-reverse" fxFlexFill>
     <app-basket></app-basket>
-    <app-item-list [items]="items$ | async"></app-item-list>
+    <app-item-list [items]="items$ | async" (addItemToBasket)="onAddItemToBasket($event)"></app-item-list>
 </div>

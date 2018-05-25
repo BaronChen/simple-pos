@@ -3,13 +3,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ConsoleContainerComponent } from './console-container.component';
 import { Store, StoreModule, INITIAL_STATE } from '@ngrx/store';
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IItem } from '../models/item';
 import { IConsoleState } from '../reducers';
 import { getFlatArray } from '../../shared/models/flat-array';
 import { IBasketItem } from '../models/basket-item';
 import { LoadItems } from '../actions/items.actions';
 import { By } from '@angular/platform-browser';
+import { AddOrUpdateItemInBasket } from '../actions/basket.actions';
 
 @Component({
   selector: 'app-basket',
@@ -25,6 +26,9 @@ class MockAppBasketComponent {
 class MockItemListComponent {
   @Input()
   items: IItem[];
+
+  @Output()
+  addItemToBasket: EventEmitter<IBasketItem> = new EventEmitter<IBasketItem>();
 }
 
 describe('ConsoleContainerComponent', () => {
@@ -105,6 +109,19 @@ describe('ConsoleContainerComponent', () => {
     const mockItemListComponent = mockItemListComponentEl.injector.get(MockItemListComponent) as MockItemListComponent;
 
     expect(mockItemListComponent.items).toEqual(testItems);
+  });
+
+  it('should dispatch event to add item to basket', () => {
+    (store.dispatch as any).calls.reset();
+    const mockItemListComponentEl = fixture.debugElement.query(By.directive(MockItemListComponent));
+    const mockItemListComponent = mockItemListComponentEl.injector.get(MockItemListComponent) as MockItemListComponent;
+    const testEvent: IBasketItem = {
+      id: testItems[0].id,
+      quantity: 24
+    };
+    mockItemListComponent.addItemToBasket.emit(testEvent);
+    expect(store.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledWith(new AddOrUpdateItemInBasket(testEvent));
   });
 
 });

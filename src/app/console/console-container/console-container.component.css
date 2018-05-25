@@ -1,3 +1,14 @@
-mat-drawer {
-  width: 20%;
+.fx-layout-overflow {
+  overflow-y: auto;
+}
+
+.place-holder {
+  height: 100vh;
+  min-width: 420px;
+}
+
+.place-holder-mobile {
+  min-height: 300px;
+  max-height: 50vh;
+  width: 100%;
 }

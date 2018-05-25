@@ -3,6 +3,7 @@ import { IFlatArray } from '../../shared/models/flat-array';
 import { IItem } from '../models/item';
 import * as fromItems from './items.reducer';
 import * as fromBasket from './basket.reducer';
+import { IBasketItemDetail } from '../models/basket-item';
 
 export interface IConsoleState {
   items: fromItems.IItemState;
@@ -31,4 +32,14 @@ export const getItems = createSelector(
 export const getBasketState = createSelector(
     getConsoleState,
     state => state.basket
+);
+
+export const getBasketItemDetails = createSelector(
+  getItemsState, getBasketState,
+  (itemsState, basketState) => basketState.basketItems.ids.map((x: string): IBasketItemDetail => ({
+    id: x,
+    name: itemsState.byId[x].name,
+    quantity: basketState.basketItems.byId[x].quantity,
+    subtotal: itemsState.byId[x].price * basketState.basketItems.byId[x].quantity
+  }))
 );

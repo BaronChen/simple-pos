@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IBasketItemDetail } from '../../models/basket-item';
 
 @Component({
   selector: 'app-basket',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketComponent implements OnInit {
 
-  constructor() { }
+
+  @Input()
+  basketItems: IBasketItemDetail;
+
+  @Input()
+  isMobile: boolean;
+
+  constructor() {}
 
   ngOnInit() {
   }

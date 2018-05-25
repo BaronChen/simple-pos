@@ -7,16 +7,23 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IItem } from '../models/item';
 import { IConsoleState } from '../reducers';
 import { getFlatArray } from '../../shared/models/flat-array';
-import { IBasketItem } from '../models/basket-item';
+import { IBasketItem, IBasketItemDetail } from '../models/basket-item';
 import { LoadItems } from '../actions/items.actions';
 import { By } from '@angular/platform-browser';
 import { AddOrUpdateItemInBasket } from '../actions/basket.actions';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-basket',
   template: '<div></div>'
 })
 class MockAppBasketComponent {
+  @Input()
+  basketItems: IBasketItemDetail;
+
+  @Input()
+  isMobile: boolean;
+
 }
 
 @Component({
@@ -77,7 +84,7 @@ describe('ConsoleContainerComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({})],
+      imports: [StoreModule.forRoot({}), LayoutModule],
       declarations: [ConsoleContainerComponent, MockAppBasketComponent, MockItemListComponent],
       providers: [{provide: INITIAL_STATE, useValue:
         {

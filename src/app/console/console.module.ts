@@ -10,6 +10,7 @@ import { ItemBlockComponent } from './components/item-block/item-block.component
 import { ItemsEffects } from './effects/items.effects';
 import { BasketComponent } from './components/basket/basket.component';
 import { OrderDialogComponent } from './components/item-block/order-dialog/order-dialog.component';
+import { BasketItemComponent } from './components/basket/basket-item/basket-item.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,14 @@ import { OrderDialogComponent } from './components/item-block/order-dialog/order
     StoreModule.forFeature('console', fromConsole.reducer),
     EffectsModule.forFeature([ItemsEffects])
   ],
-  declarations: [ConsoleContainerComponent, ItemListComponent, ItemBlockComponent, BasketComponent, OrderDialogComponent],
+  declarations: [
+    ConsoleContainerComponent,
+    ItemListComponent,
+    ItemBlockComponent,
+    BasketComponent,
+    OrderDialogComponent,
+    BasketItemComponent
+  ],
   entryComponents: [OrderDialogComponent],
   exports: [ConsoleContainerComponent]
 })

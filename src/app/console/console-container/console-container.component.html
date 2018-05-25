@@ -1,4 +1,5 @@
-<div fxLayout="row" fxLayout.xs="column-reverse" fxFlexFill>
-    <app-basket></app-basket>
+<div fxLayout="row" fxLayout.xs="column" fxFlexFill [ngClass]="{'fx-layout-overflow': isMobile}">
+    <app-basket [basketItems]="basketItems$ | async" [isMobile]="isMobile"></app-basket>
+    <div [ngClass]="isMobile ? 'place-holder-mobile':'place-holder'"></div>
     <app-item-list [items]="items$ | async" (addItemToBasket)="onAddItemToBasket($event)"></app-item-list>
 </div>

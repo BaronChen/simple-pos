@@ -30,7 +30,9 @@ export class ItemBlockComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: IOrderModalDialogResult) => {
-      this.addItemToBasket.emit({id: result.itemId, quantity: result.quantity});
+      if (result.quantity && result.quantity > 0) {
+        this.addItemToBasket.emit({id: result.itemId, quantity: result.quantity});
+      }
     });
   }
 

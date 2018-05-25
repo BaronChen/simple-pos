@@ -13,7 +13,7 @@ export class ItemsEffects {
   constructor(private actions$: Actions, private consoleService: ConsoleService) {}
 
   @Effect()
-  convertNumberEffect: Observable<Action> =
+  loadItemsEffect$: Observable<Action> =
     this.actions$.ofType(ItemsActionTypes.LoadItems).pipe(
       mergeMap((action: LoadItems) => {
         return this.consoleService.getItems().pipe(

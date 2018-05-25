@@ -25,7 +25,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+           // "poll": 1000
           },
           "configurations": {
             "production": {
@@ -78,7 +79,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ]
+            ],
+          //  "poll": 1000
           }
         },
         "lint": {

@@ -2,9 +2,9 @@ import { Action } from '@ngrx/store';
 import { IItem } from '../models/item';
 
 export enum ItemsActionTypes {
-  LoadItems = '[Basket] LoadItems',
-  LoadItemsSuccess = '[Basket] LoadItemsSuccess',
-  SelectItem = '[Basket] SelectItem',
+  LoadItems = '[Items] LoadItems',
+  LoadItemsSuccess = '[Items] LoadItemsSuccess',
+  SelectItem = '[Items] SelectItem',
 }
 
 export class LoadItems implements Action {
@@ -18,7 +18,7 @@ export class LoadItemsSuccess implements Action {
 
 export class SelectItem implements Action {
   readonly type = ItemsActionTypes.SelectItem;
-  newItemId: string;
+  payload: string;
 }
 
-export type ConsoleActions = LoadItems | LoadItemsSuccess |SelectItem;
+export type ItemsAction = LoadItems | LoadItemsSuccess |SelectItem;

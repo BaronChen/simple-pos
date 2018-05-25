@@ -1,5 +1,4 @@
 import { Action, combineReducers, ActionReducer } from '@ngrx/store';
-import { ConsoleActions, ConsoleActionTypes } from '../actions/console.actions';
 import { IFlatArray } from '../../shared/models/flat-array';
 import { IItem } from '../models/item';
 import * as fromItems from './items.reducer';

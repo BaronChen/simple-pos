@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "id": "f96e6f26-c0ea-4c1c-a538-eea3cd6ea1d3",
+      "name": "Big Mac",
+      "imageUrl": "/assets/big-mac.jpg",
+      "price": 10.99
+    },
+    {
+      "id": "e41ed5f7-588a-4827-861b-24ec9c3cc2cd",
+      "name": "Double Cheese Burger",
+      "imageUrl": "/assets/double-chees-burger.jpg",
+      "price": 7.99
+    },
+    {
+      "id": "27101249-6240-464c-b8f6-55168091168c",
+      "name": "Potato Chips",
+      "imageUrl": "/assets/potato-chips.jpg",
+      "price": 4.99
+    },
+    {
+      "id": "98de4808-3465-4738-a32d-e0c78a0028d8",
+      "name": "Chicken Wings",
+      "imageUrl": "/assets/chicken-wings.jpg",
+      "price": 8.00
+    },
+    {
+      "id": "66c7c408-a0ea-4389-88aa-b955ed6d76ef",
+      "name": "Coke",
+      "imageUrl": "/assets/coke.jpg",
+      "price": 2.99
+    },
+    {
+      "id": "b1228ba7-a4ef-4041-aab6-eb331aa29b50",
+      "name": "Orange Juice",
+      "imageUrl": "/assets/orange-juice.jpg",
+      "price": 4.50
+    }
+  ]
+}
+
+

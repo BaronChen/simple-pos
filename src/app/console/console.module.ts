@@ -5,6 +5,8 @@ import { StoreModule } from '@ngrx/store';
 import * as fromConsole from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from '../shared/shared.module';
+import { ItemListComponent } from './components/item-list/item-list.component';
+import { ItemBlockComponent } from './components/item-block/item-block.component';
 
 @NgModule({
   imports: [
@@ -13,7 +15,7 @@ import { SharedModule } from '../shared/shared.module';
     StoreModule.forFeature('console', fromConsole.reducer),
     EffectsModule.forFeature([])
   ],
-  declarations: [ConsoleContainerComponent],
+  declarations: [ConsoleContainerComponent, ItemListComponent, ItemBlockComponent],
   exports: [ConsoleContainerComponent]
 })
 export class ConsoleModule { }

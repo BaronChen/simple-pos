@@ -5,12 +5,12 @@ import { StoreModule } from '@ngrx/store';
 import * as fromConsole from './reducers/console.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ConsoleEffects } from './effects/console.effects';
-import { ShareModule } from '../share/share.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ShareModule,
+    SharedModule,
     StoreModule.forFeature('console', fromConsole.reducer),
     EffectsModule.forFeature([ConsoleEffects])
   ],

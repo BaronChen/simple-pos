@@ -1,6 +1,6 @@
-import { reducer, initialState } from './console.reducer';
+import { reducer, initialState } from './basket.reducer';
 
-describe('Console Reducer', () => {
+describe('Basket Reducer', () => {
   describe('unknown action', () => {
     it('should return the initial state', () => {
       const action = {} as any;

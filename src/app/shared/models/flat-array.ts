@@ -9,10 +9,12 @@ export interface IFlatArrayItem {
   readonly id: string;
 }
 
+export const getEmptyFlatArray = <T extends IFlatArrayItem>(): IFlatArray<T> => ({ byId: {}, ids: []});
+
 export const getFlatArray = <T extends IFlatArrayItem>(array: T[]|undefined|null): IFlatArray<T> => {
 
   if (!array) {
-    return {byId: { }, ids: [ ]};
+    return getEmptyFlatArray<T>();
   }
 
   const ids: ReadonlyArray<string> = array.map(x => x.id);

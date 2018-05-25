@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ShareModule } from './share/share.module';
+import { SharedModule } from './shared/shared.module';
 
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers, CustomSerializer } from './reducers';
@@ -22,7 +22,7 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ShareModule,
+    SharedModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     RouterModule.forRoot([]),
     LayoutModule,

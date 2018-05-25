@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShareModule } from '../share/share.module';
+import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
@@ -21,7 +21,7 @@ const appRoutes = [
 @NgModule({
   imports: [
     CommonModule,
-    ShareModule,
+    SharedModule,
     ConsoleModule,
     RouterModule.forChild(appRoutes)
   ],

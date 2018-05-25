@@ -1,22 +1,18 @@
-import { Action } from '@ngrx/store';
+import { Action, combineReducers, ActionReducer } from '@ngrx/store';
 import { ConsoleActions, ConsoleActionTypes } from '../actions/console.actions';
+import { IFlatArray } from '../../shared/models/flat-array';
+import { IItem } from '../models/item';
+import * as fromItems from './items.reducer';
+import * as fromBasket from './basket.reducer';
 
-export interface State {
-  test: string;
+export interface IConsoleState {
+  items: fromItems.IItemState;
+  basket: fromBasket.IBasketState;
 }
 
-export const initialState: State = {
-  test: 'test'
+const reducers = {
+  items: fromItems.reducer,
+  basket: fromBasket.reducer
 };
 
-export function reducer(state = initialState, action: ConsoleActions): State {
-  switch (action.type) {
-
-    case ConsoleActionTypes.LoadItems:
-      return state;
-
-
-    default:
-      return state;
-  }
-}
+export const reducer: ActionReducer<IConsoleState> = combineReducers(reducers);

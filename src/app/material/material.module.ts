@@ -8,7 +8,8 @@ import {
   MatToolbarModule,
   MatCommonModule,
   MatCardModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSidenavModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -23,7 +24,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatToolbarModule,
     MatCommonModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule
   ],
   exports: [
     LayoutModule,
@@ -35,7 +37,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatToolbarModule,
     MatCommonModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule
   ],
 })
 export class MaterialModule { }

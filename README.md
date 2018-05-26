@@ -2,6 +2,8 @@
 
 [Live Demo](http://simple-pos.s3-website-ap-southeast-2.amazonaws.com)
 
+![screenshot](./multi_screen.png)
+
 ###  (Optional) Install @angular/cli
 ```sh
 $ npm install @angular/cli@6.0.3 -g

@@ -112,7 +112,7 @@ describe('Console Selectors', () => {
         id: 'test_id_3',
         name: 'test_name_3',
         quantity: 8,
-        subtotal:subtotal3
+        subtotal: subtotal3
       }
     ];
   }

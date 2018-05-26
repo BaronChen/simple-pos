@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    docker: 
+      - image: circleci:node-8.11-stretch-browsers
+    working_directory: /home/ubuntu/baron-cv-2
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            apt-get -y -qq update
+            apt-get -y -qq install python-pip python-dev
+            pip install awscli
+            npm install
+       - run:
+          name: Run Tests
+          command: npm run test
+      - run:
+          name: Build package
+          command: |
+            npm run build
+     
+      - deploy:
+          name: Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              aws s3 sync dist/simple-pos s3://$S3_HOSTING_BUCKET --delete
+            fi

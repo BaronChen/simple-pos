@@ -3,7 +3,6 @@ jobs:
   build:
     docker: 
       - image: circleci:node-8.11-stretch-browsers
-    working_directory: /home/ubuntu/baron-cv-2
     steps:
       - checkout
       - run:

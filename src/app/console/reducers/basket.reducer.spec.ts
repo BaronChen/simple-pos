@@ -142,4 +142,18 @@ describe('Basket Reducer', () => {
     });
   });
 
+  describe('ShowReceipt Action', () => {
+    it('should return the initial state', () => {
+      const action: basketAction.ShowReceipt = {
+        type: basketAction.BasketActionTypes.ShowReceipt,
+        items: [],
+        amount: 0
+      };
+
+      const result = reducer(initialState, action);
+
+      expect(result).toBe(initialState);
+    });
+  });
+
 });

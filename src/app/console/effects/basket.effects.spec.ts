@@ -85,11 +85,7 @@ describe('BasketEffect', () => {
 
   it('should send purchase event to service', () => {
     const action = new SubmitOrder();
-    const expectedAction = new ClearBasket();
     actions$ = hot('-a-', { a: action });
-    const expected = cold('-b', {b: expectedAction});
-
-    expect(effects.submitOrderEffect$).toBeObservable(expected);
 
     effects.submitOrderEffect$.subscribe(x => {
       expect(mockConsoleService.submitPurchase).toHaveBeenCalledTimes(1);

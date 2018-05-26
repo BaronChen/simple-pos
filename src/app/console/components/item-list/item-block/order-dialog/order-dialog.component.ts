@@ -27,7 +27,4 @@ export class OrderDialogComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-
-
 }

@@ -4,12 +4,11 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './layout/layout.component';
-import { ConsoleModule } from '../console/console.module';
-import { consoleRoutes } from '../console/console.module';
+import { consoleRoutes, ConsoleModule } from '../console/console.module';
 
 
 const appRoutes = [
-   ...consoleRoutes,
+  ...consoleRoutes,
   {
     path: '',
     redirectTo: '/console',

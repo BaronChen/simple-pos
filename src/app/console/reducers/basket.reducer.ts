@@ -19,6 +19,7 @@ export function reducer(state = initialState, action: BasketAction): IBasketStat
     case BasketActionTypes.ClearBasket:
       return Object.assign({}, state, { basketItems: getEmptyFlatArray<IBasketItem>() });
     case BasketActionTypes.SubmitOrder:
+    case BasketActionTypes.ShowReceipt:
     default:
       return state;
   }

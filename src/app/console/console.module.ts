@@ -12,6 +12,7 @@ import { BasketEffects } from './effects/basket.effects';
 import { BasketComponent } from './components/basket/basket.component';
 import { OrderDialogComponent } from './components/item-list/item-block/order-dialog/order-dialog.component';
 import { BasketItemComponent } from './components/basket/basket-item/basket-item.component';
+import { ReceiptComponent } from './components/receipt/receipt.component';
 
 @NgModule({
   imports: [
@@ -26,9 +27,10 @@ import { BasketItemComponent } from './components/basket/basket-item/basket-item
     ItemBlockComponent,
     BasketComponent,
     OrderDialogComponent,
-    BasketItemComponent
+    BasketItemComponent,
+    ReceiptComponent
   ],
-  entryComponents: [OrderDialogComponent],
+  entryComponents: [OrderDialogComponent, ReceiptComponent],
   exports: [ConsoleContainerComponent]
 })
 export class ConsoleModule { }

@@ -34,5 +34,41 @@
     "name": "Orange Juice",
     "imageUrl": "/assets/images/orange-juice.jpg",
     "price": 4.50
+  },
+  {
+    "id": "c17cf1e9-b5a8-4ae5-b600-0e9ca294774d",
+    "name": "Hot Dog",
+    "imageUrl": "/assets/images/hot-dog.jpg",
+    "price": 10.99
+  },
+  {
+    "id": "a874038a-7b22-4e9b-923d-80087157e2c8",
+    "name": "Fried Chicken",
+    "imageUrl": "/assets/images/fried-chicken.jpg",
+    "price": 7.99
+  },
+  {
+    "id": "d942726a-c565-4985-a12c-17482806318c",
+    "name": "Fries",
+    "imageUrl": "/assets/images/fries.jpg",
+    "price": 4.99
+  },
+  {
+    "id": "3f14b163-eed1-4bd5-870b-b2c7a7cda00a",
+    "name": "Chicken Nugget",
+    "imageUrl": "/assets/images/chicken-nugget.jpg",
+    "price": 6.00
+  },
+  {
+    "id": "8df1e89c-0681-4717-8a8d-48ee9809e71b",
+    "name": "Diet Coke",
+    "imageUrl": "/assets/images/diet-coke.jpg",
+    "price": 2.99
+  },
+  {
+    "id": "0e00c1e5-9332-4cde-9ff7-d4517b2116d9",
+    "name": "Apple Juice",
+    "imageUrl": "/assets/images/apple-juice.jpg",
+    "price": 4.50
   }
 ]

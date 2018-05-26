@@ -17,7 +17,7 @@ export class ConsoleService {
     return this.http.get<IItem[]>('/assets/items.json');
   }
 
-  public submitPurchase(amount: number): Observable<any> {
+  public submitPurchase(amount: number): boolean {
     const event: IPurchaseEvent = {
       event: 'purchase',
       amount: amount

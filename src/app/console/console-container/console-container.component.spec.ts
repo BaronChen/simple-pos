@@ -86,7 +86,6 @@ describe('ConsoleContainerComponent', () => {
   const testState: IConsoleState = {
     items: getFlatArray(testItems),
     basket: {
-      totalPrice: 100,
       basketItems: getFlatArray(testBasketItems)
     }
   };

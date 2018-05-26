@@ -21,8 +21,9 @@ export class WebsocketService {
     );
   }
 
-  public sendMessage(data: any): Observable<any> {
-    return this.ws.send(data, WebSocketSendMode.Direct);
+  public sendMessage(data: any): boolean {
+    const result = this.ws.send(data, WebSocketSendMode.Direct);
+    return result;
   }
 
 }

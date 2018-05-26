@@ -1,7 +1,7 @@
 import { reducer, initialState, IBasketState } from './basket.reducer';
 import * as basketAction from '../actions/basket.actions';
 import { IBasketItem } from '../models/basket-item';
-import { getFlatArray } from '../../shared/models/flat-array';
+import { getFlatArray, getEmptyFlatArray } from '../../shared/models/flat-array';
 
 describe('Basket Reducer', () => {
   describe('Common', () => {
@@ -11,22 +11,6 @@ describe('Basket Reducer', () => {
       const result = reducer(initialState, action);
 
       expect(result).toBe(initialState);
-    });
-  });
-
-  describe('UpdateTotalPrice Action', () => {
-    it('Should update the price with new number ', () => {
-      const testNumber = 9999;
-      const action: basketAction.UpdateTotalPrice = {
-        type: basketAction.BasketActionTypes.UpdateTotalPrice,
-        payload:  testNumber
-      };
-
-      const result = reducer(initialState, action);
-
-      expect(result).not.toBe(initialState);
-      expect(result.totalPrice).toEqual(testNumber);
-
     });
   });
 
@@ -70,7 +54,6 @@ describe('Basket Reducer', () => {
       };
 
       const testState: IBasketState = {
-        totalPrice: 0,
         basketItems: getFlatArray<IBasketItem>([...originalItems])
       };
 
@@ -106,7 +89,6 @@ describe('Basket Reducer', () => {
       };
 
       const testState: IBasketState = {
-        totalPrice: 0,
         basketItems: getFlatArray<IBasketItem>([testItem, ...otherItems])
       };
 
@@ -125,9 +107,26 @@ describe('Basket Reducer', () => {
         type: basketAction.BasketActionTypes.ClearBasket
       };
 
-      const result = reducer(initialState, action);
+      const testItems: IBasketItem[] = [
+        {
+          id: 'test_id_1',
+          quantity: 100
+        },
+        {
+          id: 'test_id_2',
+          quantity: 200
+        },
+        {
+          id: 'test_id_3',
+          quantity: 300
+        }
+      ];
+      const testState: IBasketState = {
+        basketItems: getFlatArray<IBasketItem>(testItems)
+      };
+      const result = reducer(testState, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toEqual({basketItems: getEmptyFlatArray<IBasketItem>()});
     });
   });
 

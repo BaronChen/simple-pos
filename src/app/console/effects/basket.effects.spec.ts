@@ -9,8 +9,8 @@ import { IConsoleState } from '../reducers';
 import { IBasketItem } from '../models/basket-item';
 import { IItem } from '../models/item';
 import { getFlatArray } from '../../shared/models/flat-array';
-import { hot } from 'jasmine-marbles';
-import { SubmitOrder } from '../actions/basket.actions';
+import { hot, cold } from 'jasmine-marbles';
+import { SubmitOrder, ClearBasket } from '../actions/basket.actions';
 
 describe('BasketEffect', () => {
   let actions$: Observable<any>;
@@ -52,14 +52,13 @@ describe('BasketEffect', () => {
   const testState: IConsoleState = {
     items: getFlatArray(testItems),
     basket: {
-      totalPrice: 100,
       basketItems: getFlatArray(testBasketItems)
     }
   };
 
   beforeEach(() => {
     mockConsoleService = {
-      submitPurchase: () => { }
+      submitPurchase: () => of('')
     };
     spyOn(mockConsoleService, 'submitPurchase').and.callThrough();
     TestBed.configureTestingModule({
@@ -86,8 +85,11 @@ describe('BasketEffect', () => {
 
   it('should send purchase event to service', () => {
     const action = new SubmitOrder();
+    const expectedAction = new ClearBasket();
+    actions$ = hot('-a-', { a: action });
+    const expected = cold('-b', {b: expectedAction});
 
-    actions$ = hot('a', { a: action });
+    expect(effects.submitOrderEffect$).toBeObservable(expected);
 
     effects.submitOrderEffect$.subscribe(x => {
       expect(mockConsoleService.submitPurchase).toHaveBeenCalledTimes(1);

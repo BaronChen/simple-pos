@@ -2,16 +2,10 @@ import { Action } from '@ngrx/store';
 import { IBasketItem } from '../models/basket-item';
 
 export enum BasketActionTypes {
-  UpdateTotalPrice = '[Basket] UpdateTotalPrice',
   AddOrUpdateItemInBasket = '[Basket] AddOrUpdateItemInBasket',
   RemoveItemFromBasket = '[Basket] RemoveItemFromBasket',
   ClearBasket = '[Basket] ClearBasket',
   SubmitOrder = '[Basket] SubmitOrder'
-}
-
-export class UpdateTotalPrice implements Action {
-  readonly type = BasketActionTypes.UpdateTotalPrice;
-  constructor(public payload: number) {}
 }
 
 export class AddOrUpdateItemInBasket implements Action {
@@ -32,4 +26,4 @@ export class SubmitOrder implements Action {
   readonly type = BasketActionTypes.SubmitOrder;
 }
 
-export type BasketAction = UpdateTotalPrice | AddOrUpdateItemInBasket | RemoveItemFromBasket | ClearBasket | SubmitOrder;
+export type BasketAction =  AddOrUpdateItemInBasket | RemoveItemFromBasket | ClearBasket | SubmitOrder;

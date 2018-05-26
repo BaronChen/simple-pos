@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { IBasketItemDetail } from '../../models/basket-item';
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.css']
+  styleUrls: ['./basket.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasketComponent implements OnInit {
 

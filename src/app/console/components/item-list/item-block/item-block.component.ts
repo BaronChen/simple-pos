@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { IItem } from '../../../models/item';
 import { MatDialog } from '@angular/material';
 import { OrderDialogComponent, IOrderModalDialogData, IOrderModalDialogResult } from './order-dialog/order-dialog.component';
@@ -7,7 +7,8 @@ import { IBasketItem } from '../../../models/basket-item';
 @Component({
   selector: 'app-item-block',
   templateUrl: './item-block.component.html',
-  styleUrls: ['./item-block.component.css']
+  styleUrls: ['./item-block.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemBlockComponent implements OnInit {
 

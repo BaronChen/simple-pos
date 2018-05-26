@@ -11,7 +11,7 @@ export class WebsocketService {
   ws: $WebSocket;
 
   constructor() {
-    this.ws = new $WebSocket('ws://demos.kaazing.com/echo');
+    this.ws = new $WebSocket('ws://demos.kaazing.com/echo', null, { reconnectIfNotNormalClose: true });
 
     this.ws.onMessage(
       (msg: MessageEvent) => {

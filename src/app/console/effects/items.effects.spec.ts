@@ -7,7 +7,7 @@ import { ConsoleService } from '../services/console.service';
 import { IItem } from '../models/item';
 import { LoadItems, LoadItemsSuccess } from '../actions/items.actions';
 
-describe('ItemsService', () => {
+describe('ItemsEffect', () => {
   let actions$: Observable<any>;
   let effects: ItemsEffects;
   let mockConsoleService: any;

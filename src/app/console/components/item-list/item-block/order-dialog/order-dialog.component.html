@@ -2,7 +2,7 @@
 <div mat-dialog-content>
   <span>{{data?.itemName}} x </span>
   <mat-form-field class="order-modal-input">
-   <input matInput type="number" [(ngModel)]="quantity" cdkFocusInitial>
+   <input matInput type="number" [(ngModel)]="quantity" cdkFocusInitial appNumberOnly>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

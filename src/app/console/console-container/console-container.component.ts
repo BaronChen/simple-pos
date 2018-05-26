@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { IItem } from '../models/item';
 import { getItems, getBasketItemDetails, getTotal } from '../reducers';
 import { LoadItems } from '../actions/items.actions';
-import { AddOrUpdateItemInBasket, RemoveItemFromBasket } from '../actions/basket.actions';
+import { AddOrUpdateItemInBasket, RemoveItemFromBasket, SubmitOrder } from '../actions/basket.actions';
 import { IBasketItem, IBasketItemDetail } from '../models/basket-item';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
@@ -45,5 +45,9 @@ export class ConsoleContainerComponent implements OnInit {
 
   onRemoveItem(id: string) {
     this.store.dispatch(new RemoveItemFromBasket(id));
+  }
+
+  onSubmitOrder() {
+    this.store.dispatch(new SubmitOrder());
   }
 }

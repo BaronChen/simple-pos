@@ -1,5 +1,7 @@
 <div fxLayout="row" fxLayout.xs="column" fxFlexFill [ngClass]="{'fx-layout-overflow': isMobile}">
-    <app-basket [basketItems]="basketItems$ | async" [total]="total$ | async" [isMobile]="isMobile" (removeItem)="onRemoveItem($event)"></app-basket>
+    <app-basket [basketItems]="basketItems$ | async" [total]="total$ | async" 
+        [isMobile]="isMobile" (removeItem)="onRemoveItem($event)" (submitOrder)="onSubmitOrder()">
+    </app-basket>
     <div [ngClass]="isMobile ? 'place-holder-mobile':'place-holder'"></div>
     <app-item-list [items]="items$ | async" (addItemToBasket)="onAddItemToBasket($event)"></app-item-list>
 </div>

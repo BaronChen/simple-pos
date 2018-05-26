@@ -10,7 +10,7 @@ import { getFlatArray } from '../../shared/models/flat-array';
 import { IBasketItem, IBasketItemDetail } from '../models/basket-item';
 import { LoadItems } from '../actions/items.actions';
 import { By } from '@angular/platform-browser';
-import { AddOrUpdateItemInBasket, RemoveItemFromBasket } from '../actions/basket.actions';
+import { AddOrUpdateItemInBasket, RemoveItemFromBasket, SubmitOrder } from '../actions/basket.actions';
 import { LayoutModule } from '@angular/cdk/layout';
 
 @Component({
@@ -29,6 +29,9 @@ class MockBasketComponent {
 
   @Output()
   removeItem: EventEmitter<string> = new EventEmitter<string>();
+
+  @Output()
+  submitOrder: EventEmitter<any> = new EventEmitter();
 
 }
 
@@ -167,6 +170,15 @@ describe('ConsoleContainerComponent', () => {
     mockBasketComponent.removeItem.emit(testBasketItems[0].id);
     expect(store.dispatch).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledWith(new RemoveItemFromBasket(testBasketItems[0].id));
+  });
+
+  it('should dispatch SubmitOrder action when event emited', () => {
+    (store.dispatch as any).calls.reset();
+    const mockBasketComponentEl = fixture.debugElement.query(By.directive(MockBasketComponent));
+    const mockBasketComponent = mockBasketComponentEl.injector.get(MockBasketComponent) as MockBasketComponent;
+    mockBasketComponent.submitOrder.emit();
+    expect(store.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledWith(new SubmitOrder());
   });
 
 });

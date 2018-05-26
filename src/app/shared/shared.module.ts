@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NumberOnlyDirective } from './directives/number-only.directive';
 
 
 @NgModule({
@@ -15,13 +16,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     FlexLayoutModule
   ],
-  declarations: [],
+  declarations: [NumberOnlyDirective],
   exports: [
     MaterialModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NumberOnlyDirective
   ]
 })
 export class SharedModule { }

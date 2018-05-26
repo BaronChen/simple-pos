@@ -21,6 +21,9 @@ export class BasketComponent implements OnInit {
   @Output()
   removeItem: EventEmitter<string> = new EventEmitter<string>();
 
+  @Output()
+  submitOrder: EventEmitter<any> = new EventEmitter();
+
   constructor() {}
 
   ngOnInit() {

@@ -77,13 +77,24 @@ describe('BasketComponent', () => {
     expect(totalEl.nativeElement.textContent).toContain(testTotal);
   });
 
-  it('should emit events correctly', () => {
+  it('should emit remoteItem events correctly', () => {
     spyOn(component.removeItem, 'emit').and.callFake(() => {});
     const mockBasketItemComponentEls = fixture.debugElement.queryAll(By.directive(MockBasketItemComponent));
     const mockBasketItemComponent = mockBasketItemComponentEls.map(x => x.injector.get(MockBasketItemComponent) as MockBasketItemComponent);
     mockBasketItemComponent[1].removeItem.emit(mockBasketItemComponent[1].basketItem.id);
     expect(component.removeItem.emit).toHaveBeenCalledTimes(1);
     expect(component.removeItem.emit).toHaveBeenCalledWith(testItems[1].id);
+  });
+
+  it('should emit submitOrder events correctly', () => {
+    spyOn(component.submitOrder, 'emit').and.callFake(() => {});
+    const btnEl = fixture.debugElement.query(By.css('button'));
+    btnEl.triggerEventHandler('click', null);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component.submitOrder.emit).toHaveBeenCalledTimes(1);
+      expect(component.submitOrder.emit).toHaveBeenCalledWith();
+    });
   });
 
 });

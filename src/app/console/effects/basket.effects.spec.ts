@@ -6,11 +6,22 @@ import { BasketEffects } from './basket.effects';
 import { ConsoleService } from '../services/console.service';
 import { Store, INITIAL_STATE, StoreModule } from '@ngrx/store';
 import { IConsoleState } from '../reducers';
-import { IBasketItem } from '../models/basket-item';
+import { IBasketItem, IBasketItemDetail } from '../models/basket-item';
 import { IItem } from '../models/item';
 import { getFlatArray } from '../../shared/models/flat-array';
 import { hot, cold } from 'jasmine-marbles';
-import { SubmitOrder, ClearBasket } from '../actions/basket.actions';
+import { SubmitOrder, ClearBasket, ShowReceipt } from '../actions/basket.actions';
+import { MatDialog } from '@angular/material';
+import { IReceiptData } from '../components/receipt/receipt.component';
+
+export class MatDialogMock {
+
+  constructor() { }
+
+  open() {
+    return {};
+  }
+}
 
 describe('BasketEffect', () => {
   let actions$: Observable<any>;
@@ -56,7 +67,10 @@ describe('BasketEffect', () => {
     }
   };
 
+  let testDialog: MatDialogMock;
+
   beforeEach(() => {
+    testDialog = new MatDialogMock();
     mockConsoleService = {
       submitPurchase: () => of('')
     };
@@ -72,6 +86,9 @@ describe('BasketEffect', () => {
             {
               console: testState
             }
+        },
+        {
+          provide: MatDialog, useFactory: () => testDialog
         }
       ]
     });
@@ -90,6 +107,42 @@ describe('BasketEffect', () => {
     effects.submitOrderEffect$.subscribe(x => {
       expect(mockConsoleService.submitPurchase).toHaveBeenCalledTimes(1);
       expect(mockConsoleService.submitPurchase).toHaveBeenCalledWith(61.87);
+    });
+  });
+
+  it('should send purchase event to service', () => {
+    const action = new SubmitOrder();
+    actions$ = hot('-a-', { a: action });
+
+    effects.submitOrderEffect$.subscribe(x => {
+      expect(mockConsoleService.submitPurchase).toHaveBeenCalledTimes(1);
+      expect(mockConsoleService.submitPurchase).toHaveBeenCalledWith(61.87);
+    });
+  });
+
+  it('should open receipt dialog', () => {
+    spyOn(testDialog, 'open').and.callThrough();
+    const testAmount = 9999;
+    const testBasketDetails: IBasketItemDetail[] = [
+      {
+        id: 'test_id_1',
+        name: 'test_name_1',
+        quantity: 4,
+        subtotal: 20
+      }
+    ];
+
+    const action = new ShowReceipt(testAmount, testBasketDetails);
+    actions$ = hot('-a-', { a: action });
+
+    const expectedData: IReceiptData = {
+      amount: testAmount,
+      items: testBasketDetails
+    };
+
+    effects.submitOrderEffect$.subscribe(x => {
+      expect(testDialog.open).toHaveBeenCalledTimes(1);
+      expect(testDialog.open).toHaveBeenCalledWith(expectedData, jasmine.any(Object));
     });
   });
 

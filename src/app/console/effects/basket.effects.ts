@@ -36,6 +36,7 @@ export class BasketEffects {
           amount: action.amount
         };
         this.dialog.open(ReceiptComponent, {
+          width: '500px',
           data: data
         });
       })

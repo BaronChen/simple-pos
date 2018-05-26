@@ -12,7 +12,7 @@ jobs:
             apt-get -y -qq install python-pip python-dev
             pip install awscli
             npm install
-       - run:
+      - run:
           name: Run Tests
           command: npm run test
       - run:

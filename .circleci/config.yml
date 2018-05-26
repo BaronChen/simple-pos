@@ -8,9 +8,9 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apt-get -y -qq update
-            apt-get -y -qq install python-pip python-dev
-            pip install awscli
+            sudo apt-get -y -qq update
+            sudo apt-get -y -qq install python-pip python-dev
+            sudo pip install awscli
             npm install
       - run:
           name: Run Tests

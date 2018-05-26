@@ -21,4 +21,5 @@
 .basket-item-list {
   max-height: 70%;
   overflow-y: auto;
+  border-bottom: solid 1px lightgray;
 }
